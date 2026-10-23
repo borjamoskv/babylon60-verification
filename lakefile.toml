@@ -1,0 +1,7 @@
+name = "babylon60_verification"
+version = "0.1.0"
+defaultTargets = ["AX0"]
+
+[[lean_lib]]
+name = "AX0"
+srcDir = "proof/lean"
