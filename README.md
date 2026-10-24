@@ -10,15 +10,29 @@ access. Integrity, signing identity and runtime evidence are separate checks.
 Historical reports retain their invalid attestations and simulated faults;
 new tests neither replace nor sign those reports.
 
-Requires Python 3.10+ for offline file verification. From the extracted directory:
+## Verificación manual / Manual verification
+
+ES: Desde la raíz del repositorio o del paquete extraído, ejecuta:
+
+EN: From the repository root or the extracted package, run:
 
 ```sh
-python3 verify.py
+./verify.sh
 ```
 
-Exit code 0 means that the artifact inventory and claims-manifest binding match.
-It does not mean that every recorded test passed, that the release is current,
-or that any signing identity has been verified. Read the reported failures.
+ES: Comprueba primero los hashes y después compila AX0 con `lake build`. Si los
+hashes fallan, no compila. Devuelve un código distinto de cero si falla cualquiera
+de las dos comprobaciones. Requiere Python 3.10+ y Elan con la versión de Lean
+indicada en `lean-toolchain`.
+
+EN: Checks hashes first, then compiles AX0 with `lake build`. A hash failure stops
+the command before compilation. Either failure returns a nonzero exit code.
+Requires Python 3.10+ and Elan with the Lean version specified in `lean-toolchain`.
+
+Exit code 0 means that the artifact inventory and claims-manifest binding match
+and AX0 compiles. It does not mean that every recorded runtime test passed, that
+the release is current, or that a signing identity has been verified. Read the
+reported failures.
 For a digest obtained through a trusted channel:
 
 ```sh
@@ -35,13 +49,6 @@ already installed; the verifier does not install dependencies or use the network
 
 ```sh
 python3 verify.py --release-public-key <trusted-ed25519-public-key-hex>
-```
-
-To machine-check the formal authorization model with the exact Lean version in
-`lean-toolchain`, install that toolchain with Elan, then run:
-
-```sh
-lake build
 ```
 
 The minimal Lake project has no third-party dependencies. A first toolchain

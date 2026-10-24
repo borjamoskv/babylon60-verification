@@ -1,6 +1,6 @@
 {
   "schema": "babylon60.verification-mirror/v1",
-  "generated_at": "2026-10-23T13:04:08.945Z",
+  "generated_at": "2026-10-24T00:59:04.370808Z",
   "source": {
     "name": "BABYLON-60",
     "remote": "https://github.com/borjamoskv/BABYLON-60",
@@ -34,8 +34,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2602,
-      "sha256": "5db6a0317274f45fa704a225d61fdf3f41a9dfc3b26f53cb0c622ba647188101"
+      "bytes": 3069,
+      "sha256": "153772d289b9965a27694972bc3353ea5ccd5c21c985f944c3446b24b56b72fe"
     },
     {
       "path": "RELEASE_MANIFEST.json",
@@ -101,6 +101,11 @@
       "path": "verify.py",
       "bytes": 4235,
       "sha256": "4199f2dc2469bed8745d4a2dd119a85641c342eb589e4bf4de898557b18d4a6f"
+    },
+    {
+      "path": "verify.sh",
+      "bytes": 123,
+      "sha256": "f032bec4871139cba8b712493dd9514a1463d5d90a7f898ab32b61770c4e17ab"
     }
   ]
 }
