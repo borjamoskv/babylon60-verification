@@ -1,19 +1,27 @@
 {
-  "release": "5.0.0",
+  "release": "5.0.1",
   "state": "candidate",
-  "commit": "d7d96bd1b7bc881a0544412ec7dcdfc424819651",
-  "source_tree_digest": "75b1717c61abdb46b78035f6845492f69eee06747927a5c5b828ff16f6d9bd61",
+  "commit": "a25ff274308fbe74c10be6b0fc7513da93b78887+dirty:cc512bce910ae7bd",
+  "source_tree_digest": "7f2944f1378ff981c18a47e4e2ff86e15ce08e802f96542f6a344f3f0e0db409",
   "axiom_root": "AX-0: No stochastic component may authorize its own irreversible effects (LLM != authority)",
-  "claims_manifest_digest": "e34750df315efa4e1c85e28319ae98fb6612f3ee53d7a192909fc16687afbe4d",
-  "compiled_at_iso": "2026-10-18T17:57:06Z",
+  "claims_manifest_digest": "79f3269add7ccc0dc4b9c0d08c8022eed4203a249b9b58de2121de34d162aa53",
+  "compiled_at_iso": "2026-10-23T15:01:15Z",
   "claims": {
-    "verified": 10,
-    "empirical_and_bounded": 16,
+    "verified": 9,
+    "empirical_and_bounded": 19,
     "experimental": 0,
     "failed": 0,
-    "total": 26
+    "total": 28
   },
-  "evidence_root": "sha3-256:76e0e6a31229dae7f8aba0c92ca18b6759273a53041d4774060a4f17ddc1288d",
+  "evidence_root": "sha3-256:6eddc9d2e72bcac098dac47610a989e674dbe8957f4104485f74f5fbf177bf9a",
+  "sbom": {
+    "format": "CycloneDX-1.5",
+    "cargo_sbom_sha256": "acca2fe9b946edf592ee7180adf80bf4c8000781b8949e834c0b536ef733a6c2",
+    "cargo_components": 486,
+    "python_sbom_sha256": "24190590d402cd0ec5947b5030fd39887c1afd36a18212900a036650311cf07e",
+    "python_components": 226
+  },
+  "release_bundle": null,
   "signing_authority": {
     "algorithm": null,
     "scope": "unsigned_local_evidence",
