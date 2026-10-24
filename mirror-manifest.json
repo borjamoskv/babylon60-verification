@@ -1,6 +1,6 @@
 {
   "schema": "babylon60.verification-mirror/v1",
-  "generated_at": "2026-10-24T00:59:04.370808Z",
+  "generated_at": "2026-10-24T01:31:48.747517+00:00",
   "source": {
     "name": "BABYLON-60",
     "remote": "https://github.com/borjamoskv/BABYLON-60",
@@ -34,13 +34,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 3069,
-      "sha256": "153772d289b9965a27694972bc3353ea5ccd5c21c985f944c3446b24b56b72fe"
+      "bytes": 3745,
+      "sha256": "1b48b9e19bdeb35e519cc43acb9a3e21b49136b6dce45f1756ce3cc04d82c5a6"
     },
     {
       "path": "RELEASE_MANIFEST.json",
-      "bytes": 810,
-      "sha256": "e5ecd85f695f1d39c963c4bde87ceaccc50713ea0cf64525e387a131bb1ac089"
+      "bytes": 1151,
+      "sha256": "e0d5f43ea76bba9c0c5861f1f9acec77206bd159bd1f1cb586431496e7786fd9"
     },
     {
       "path": "claims_sitrep.json",
@@ -66,6 +66,11 @@
       "path": "reports/ax0-adversarial-report.json",
       "bytes": 407,
       "sha256": "77945423639ba1da76b6e9e47f23ccb9a5194733c34aa3f9f22ad25394a9adae"
+    },
+    {
+      "path": "reports/historical-release-manifest.json",
+      "bytes": 810,
+      "sha256": "e5ecd85f695f1d39c963c4bde87ceaccc50713ea0cf64525e387a131bb1ac089"
     },
     {
       "path": "reports/nemesis-crash-report.json",
@@ -98,14 +103,29 @@
       "sha256": "2801600f7a805f9639de34dc7c70e2f607d170297b6f710b124cc1e3b2c36f20"
     },
     {
+      "path": "tests/test_mirror_bindings.py",
+      "bytes": 3315,
+      "sha256": "eb5aac135cc076bfae6aa8992b152e2753538b77979b3d4d4026d93358a89854"
+    },
+    {
       "path": "verify.py",
-      "bytes": 4235,
-      "sha256": "4199f2dc2469bed8745d4a2dd119a85641c342eb589e4bf4de898557b18d4a6f"
+      "bytes": 4967,
+      "sha256": "098a7fb445900aabb64634cac1149ca4baa66a3c459800e4cdfb8147016a4030"
     },
     {
       "path": "verify.sh",
       "bytes": 123,
       "sha256": "f032bec4871139cba8b712493dd9514a1463d5d90a7f898ab32b61770c4e17ab"
     }
-  ]
+  ],
+  "previous_manifest_sha256": "2840cf6c8bc1dc722480d67a69faa0bb779382c9fdf1be76b785dde77eb8229c",
+  "artifact_updates": {
+    "RELEASE_MANIFEST.json": {
+      "source_repository": "https://github.com/borjamoskv/BABYLON-60",
+      "source_head": "1fb053dcf6d1d8d40080d4fc37821f93dd648ddc",
+      "working_tree_dirty": true,
+      "sha256": "e0d5f43ea76bba9c0c5861f1f9acec77206bd159bd1f1cb586431496e7786fd9",
+      "scope": "Unsigned manifest for the already recorded historical claim run; not a new runtime execution or current-tree attestation. Original manifest preserved in reports/historical-release-manifest.json."
+    }
+  }
 }

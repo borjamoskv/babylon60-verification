@@ -43,21 +43,34 @@ def verify(root: Path, expected_digest: str | None, release_key: str | None) -> 
         payload = read_artifact(root, entry["path"])
         if len(payload) != entry["bytes"] or hashlib.sha256(payload).hexdigest() != entry["sha256"]:
             raise ValueError(f"Artifact integrity failure: {entry['path']}")
-    print(f"INTEGRITY OK: {len(entries)} artifacts; manifest SHA-256 {digest}")
-    print("Scope: packaged bytes only. This does not re-run the private runtime harness.")
     sitrep = json.loads(read_artifact(root, "claims_sitrep.json"))
     claims_digest = hashlib.sha256(read_artifact(root, "CLAIMS.toml")).hexdigest()
     if sitrep["claims_manifest_digest"] != claims_digest:
         raise ValueError("Claim run does not match the packaged CLAIMS.toml")
+    release = json.loads(read_artifact(root, "RELEASE_MANIFEST.json"))
+    if release.get("claims_manifest_digest") != claims_digest:
+        raise ValueError("Release does not match the packaged CLAIMS.toml")
     failures = sitrep.get("failed_claims", [])
+    expected_counts = {
+        "total": sitrep["total_claims"],
+        "verified": sitrep["verified"],
+        "empirical_and_bounded": sitrep["partial"],
+        "experimental": sitrep["experimental"],
+        "failed": len(failures),
+    }
+    if release.get("claims") != expected_counts:
+        raise ValueError("Release claim counts do not match the packaged claim run")
+    print(f"INTEGRITY OK: {len(entries)} artifacts; manifest SHA-256 {digest}")
+    print("Scope: packaged bytes and manifest bindings only. This does not re-run the runtime harness.")
     print(f"Recorded claim-run failures: {len(failures)} ({', '.join(failures) or 'none'})")
+    print(f"Recorded claims: {sitrep['verified']} verified; {sitrep['partial']} bounded/partial. "
+          "Historical per-row 'verified' flags may denote suite success, not proof of the property.")
     print("Secure Enclave human presence: NO_VERIFICADO by these automated tests.")
     if release_key is None:
         print("Signing identity: NOT VERIFIED. Use --release-public-key with an independently trusted key.")
         return
     from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 
-    release = json.loads(read_artifact(root, "RELEASE_MANIFEST.json"))
     signature = release.pop("signature")
     trusted = bytes.fromhex(release_key)
     embedded = bytes.fromhex(release["signing_authority"]["public_key"])
